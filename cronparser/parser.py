@@ -1,10 +1,10 @@
 from re import match
 
-class CronExpressionParserValueError(Exception):
+class CronConfigParserValueError(Exception):
     def __init__(self, field_name, errors=[]):
-        super(CronExpressionParserValueError, self).__init__('Incorrect value for {} argument'.format(field_name))
+        super(CronConfigParserValueError, self).__init__('Incorrect value for {} argument'.format(field_name))
 
-class CronExpressionParser():
+class CronConfigParser():
     fields = [
         'minutes',
         'hours',
@@ -38,7 +38,7 @@ class CronExpressionParser():
 
     def _validateRange(self, range_start, range_end, constraint_start, constraint_end, field_type):
         if int(range_start) < constraint_start or int(range_end) > constraint_end:
-            raise CronExpressionParserValueError(field_type)
+            raise CronConfigParserValueError(field_type)
     
     def _create_range(self, range_start, range_end):
         return [str(i) for i in range(int(range_start), int(range_end))]
@@ -78,9 +78,9 @@ class CronExpressionParser():
             all_values = range(int(start), int(end) + 1)
             return [str(n) for n in all_values if int(n) % int(divider) == 0]
 
-        raise CronExpressionParserValueError(field_type)
+        raise CronConfigParserValueError(field_type)
 
-    def print_expression(self):
+    def print_expressions(self):
         for key, field_type in enumerate(self.fields):
             if self.expressions[key]:
                 expression = self.expressions[key]

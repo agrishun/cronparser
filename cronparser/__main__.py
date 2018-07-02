@@ -1,11 +1,11 @@
 import sys
-from .parser import CronExpressionParser
+from .parser import CronConfigParser
 
 def main():
     try:
         args = sys.argv[1].split(' ')
-        expression = CronExpressionParser(args)
-        expression.print_expression()
+        expression = CronConfigParser(args)
+        expression.print_expressions()
     except IndexError:
         raise Exception('Missing arguments')
 
