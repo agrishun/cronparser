@@ -6,16 +6,16 @@ class CronExpressionParserValueError(Exception):
 
 class CronExpressionParser():
     fields = [
-        'minute',
-        'hour',
+        'minutes',
+        'hours',
         'day of month',
         'month',
         'day of week',
         'command'
     ]
     constrains = {
-        'minute' : [0, 59],
-        'hour': [0, 23],
+        'minutes' : [0, 59],
+        'hours': [0, 23],
         'day of month': [1, 31],
         'month': [1, 12],
         'day of week': [1, 7],
