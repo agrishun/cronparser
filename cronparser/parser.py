@@ -2,7 +2,7 @@ from re import match
 
 class CronExpressionParserValueError(Exception):
     def __init__(self, field_name, errors=[]):
-        super().__init__('Incorrect value for {} argument'.format(field_name))
+        super(CronExpressionParserValueError, self).__init__('Incorrect value for {} argument'.format(field_name))
 
 class CronExpressionParser():
     fields = [
